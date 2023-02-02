@@ -18,3 +18,8 @@ birthsSantaMonica = [42,25,39,27,28,33,34,37,43,33,27,36,37]
 plt.plot(year, birthsLaFlora, label = 'La Flora', linewidth = 3, color = 'blue')
 plt.plot(year, birthsSantaMonica, label = 'Santa Monica', linewidth = 3, color = 'red')
 
+# Definición de título y nombres de ejes
+plt.title('Numero de nacimientos zonas norte y oeste entre 2005-2017')
+plt.ylabel('Nacimientos')
+plt.xlabel('Años')
+
