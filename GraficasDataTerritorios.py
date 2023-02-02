@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 # importar libreria matplotlib
@@ -22,4 +22,15 @@ plt.plot(year, birthsSantaMonica, label = 'Santa Monica', linewidth = 3, color =
 plt.title('Numero de nacimientos zonas norte y oeste entre 2005-2017')
 plt.ylabel('Nacimientos')
 plt.xlabel('Años')
+
+# Mostrar leyenda, cuadrícula y figura
+plt.legend()
+plt.grid()
+plt.show()
+
+
+# In[ ]:
+
+
+
 
