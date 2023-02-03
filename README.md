@@ -16,3 +16,20 @@ Para consultar el código de desarrollo de machine learning ver archivos con ext
 
 Para visualizar los graficos de análisis de datos demográficos consultar carpeta "Graficas"
 
+
+### Notas
+
+Barrios zona La Flora (Norte): Prados del Norte, La Flora, El Bosque, Menga, Chipichape, Vipasa, Urbanización La Flora, Senderos de La Flora (Antiguo Parque del amor - Area en Desarrollo).
+
+Barrios zona Santa Mónica (Norte):
+
+Barrios zona Oeste: Terrón Colorado, Vista Hermosa, Aguacatal, Santa Rita, Santa Teresita, Arboledas, Normandía, El Nacional, El Peñón, San Antonio, San Cayetano, Los Libertadores, Navarro - La Chanca, Bellavista, San Fernado Viejo, Miraflores, El Mortiñal, Santa Bárbara, Tejares - Cristales.
+
+Barrios zona El Lido: Santa Ana - La Selva, Las Quintas de Don Simón, Ciudad Capri, La Hacienda, Los Portales - Nuevo Rey, Bosques del Limonar, El Gran Limonar - Cataya, El Gran Limonar, Prados del Limonar, El refugio, La Cascada, El Lido, Urbanización Tequendama, Eucarístico, San fernando Nuevo, Urbanización Nueva Granada, Santa Isabel, Los Cambulos, Urbanización Militar, Cuarto de Legua - Guadalupe, Nueva Tequendama, Camino Real - Joaquin Borrero Sinisterra, Camino Real - Los Fundadores, Sector Altos de Santa Isabel, Unidad Residencial santiago de Cali, Unidad Residencial Coliseo, Cañaveralejo - Seguros Patria, Cañaveral, Pampalinda, Sector Cañaveralejo - Guadalupe.
+
+Barrios zona El Ingenio: La Playa, Caney, Lilí, El Ingenio, Mayapán - Las Vegas, Unicentro Cali, Ciudadela Pasoancho, Urbanización San Joaquín.
+
+Barrios zona Ciudad Jardín: Urbanización Ciudad Jardín, Parcelaciones Pance, Urbanización Río Lilí, Ciudad Campestre, Club Campestre.
+
+
+
