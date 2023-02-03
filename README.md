@@ -8,9 +8,11 @@ Predecir los datos de personas que nacieron entre los años 2018 y el año 2022 
 Ajustar los datos de número de viviendas por barrio y estrato socioeconomico 5 y 6, publicados por la Alcaldía de Cali, relacionando la densidad de población femenina en edad reproductiva por manzana censal, como universo potencial base sobre el cual se estimará el porcentaje de nacimientos de acuerdo a datos historicos de los Censos de Población y Vivienda de los años 2018 y 2005 para realizar el entrenamiento del algoritmo con el que se pretende predecir el dato de nacimientos posteriores al año 2018 y hasta el año 2022.
 ### Fuentes de datos:
 Censos Nacionales de Población y Vivienda 2018 y 2005. Departamento Administrativo Nacional de Estadística DANE.
-Infraestrucutra de Datos Espaciales de Santiago de Cali, IDESC.
+Infraestructura de Datos Espaciales de Santiago de Cali, IDESC.
+
 Documentos de Cali en Cifras años 2022, 2020, 2018, 2012 y 2008.
 ### Instrucciones:
 Para consultar el código de desarrollo de machine learning ver archivos con extensión .py
+
 Para visualizar los graficos de análisis de datos demográficos consultar carpeta "Graficas"
 
