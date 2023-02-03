@@ -1,2 +1,3 @@
-# geomarketing_edu
+﻿# geomarketing_edu
 Proyecto de machine learning enfocado en la predicción de datos demográficos de nacimientos desde el año 2018 en los barrios y manzanas censales de Cali de acuerdo a la información del Censo de Población 2018 del DANE
+El objetivo de este proyecto es predecir el dato de personas que nacieron entre los años 2018 (año de aplicación del Censo Nacional de Población y Vivienda del año 2018 realizado por el Departamento Administrativo Nacional de Estadística DANE) y el año 20222 en los barrios de estratos socioeconómicos 5 y6 de la ciudad de Cali - Colombia con fines de estimar la población o mercado objetivo para la prestación del servicio educativo en las zonas La Flora (Norte), Santa Monica (Norte), Oeste, El Lido (suroccidente), El Ingenio (Sur) y Ciudad Jardin (Sur) de la ciudad de Cali.
