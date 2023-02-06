@@ -25,7 +25,9 @@ Barrios zona Santa Mónica (Norte: 134 manzanas censales):
 
 Barrios zona Oeste (170 manzanas censales): Terrón Colorado, Vista Hermosa, Aguacatal, Santa Rita, Santa Teresita, Arboledas, Normandía, El Nacional, El Peñón, San Antonio, San Cayetano, Los Libertadores, Navarro - La Chanca, Bellavista, San Fernado Viejo, Miraflores, El Mortiñal, Santa Bárbara, Tejares - Cristales.
 
-Barrios zona El Lido (Suroccidente: 457 manzanas censales): Santa Ana - La Selva, Las Quintas de Don Simón, Ciudad Capri, La Hacienda, Los Portales - Nuevo Rey, Bosques del Limonar, El Gran Limonar - Cataya, El Gran Limonar, Prados del Limonar, El refugio, La Cascada, El Lido, Urbanización Tequendama, Eucarístico, San fernando Nuevo, Urbanización Nueva Granada, Santa Isabel, Los Cambulos, Urbanización Militar, Cuarto de Legua - Guadalupe, Nueva Tequendama, Camino Real - Joaquin Borrero Sinisterra, Camino Real - Los Fundadores, Sector Altos de Santa Isabel, Unidad Residencial santiago de Cali, Unidad Residencial Coliseo, Cañaveralejo - Seguros Patria, Cañaveral, Pampalinda, Sector Cañaveralejo - Guadalupe.
+Barrios zona El Lido (Suroccidente: 224 manzanas censales): Cuarto de Legua - Guadalupe, Nueva Tequendama, Camino Real - Joaquin Borrero Sinisterra, Camino Real - Los Fundadores, Sector Altos de Santa Isabel, Unidad Residencial santiago de Cali, Unidad Residencial Coliseo, Cañaveral, Pampalinda, Sector Cañaveralejo - Guadalupe, Urbanización Nueva Tequendama, Los Cambulos, La Cascada, Urbanización Militar, Santa Isabel, San Fernando Nuevo, Eucarístico, El Lido, Urbanización Nueva Granada.
+
+Barrios La Hacienda (Sur: 233 manzanas): Ciudad Capri, Las Quintas de Don Simón, El Gran Limonar, Prados del Limonar, Santa Anita - La Selva, El Gran Limonar - Cataya, La Hacienda, Los Portales - Nuevo Rey, Bosques del Limonar, Cañaveralejo - Seguros Patria.
 
 Barrios zona El Ingenio (Sur: 221 manzanas censales): La Playa, Caney, Lilí, El Ingenio, Mayapán - Las Vegas, Unicentro Cali, Ciudadela Pasoancho, Urbanización San Joaquín.
 
