@@ -221,3 +221,21 @@ CREATE INDEX sidx_manz_censal_jf_geom
   (geom);
 
 SELECT cod_barr AS cod_barrio, barrio, zona, COUNT(DISTINCT id) AS manzanas FROM manz_censal_jf GROUP BY cod_barrio, barrio, zona ORDER BY manzanas DESC;
+
+SELECT cod_barr, barrio, zona from manz_censal_jf group by cod_barr, barrio, zona order by barrio;
+SELECT (t1.cod_barr, t2.cod_barr), (t1.barrio, t2.barrio), t1.manz_est5, t2.manz_est6
+
+FROM
+(SELECT cod_barr, barrio, COUNT(DISTINCT id) AS manz_est5 FROM manz_censal_jf WHERE estrato = 5 GROUP BY cod_barr, barrio ORDER BY barrio, manz_est5 
+) AS t1
+
+FULL JOIN
+(SELECT cod_barr, barrio, COUNT(DISTINCT id) AS manz_est6 FROM manz_censal_jf WHERE estrato = 6 GROUP BY cod_barr, barrio ORDER BY manz_est6
+) AS t2 ON t1.barrio = t2.barrio ORDER BY t1.manz_est5 DESC;
+
+
+
+
+
+
+
