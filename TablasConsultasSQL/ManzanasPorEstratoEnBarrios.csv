@@ -1,73 +1,73 @@
-cod_barrio;barrio;manz_est5;manz_est6
-1982;Santa Barbara;0;1
-199;Aguacatal;0;2
-216;Menga;0;3
-204;Normandia;0;9
-2297;Urbanizacion Rio Lili;0;12
-1992;Canaveral;0;6
-1981;Sector Altos de Santa Isabel;0;4
-202;Santa Teresita;0;17
-2299;Club Campestre;0;2
-2296;Parcelaciones Pance;0;101
-101;Terron Colorado;0;1
-212;La Flora;60;0
-1783;Ciudad Capri;58;0
-211;Prados del Norte;52;0
-1774;Caney;50;0
-1775;Lili;49;0
-1780;El Ingenio;46;34
-210;Santa Monica;44;5
-1910;San Fernando Viejo;40;0
-295;Urbanizacion La Flora;38;0
-1921;Nueva Tequendama;35;0
-1784;La Hacienda;32;0
-1789;El Gran Limonar - Cataya;30;0
-1904;Urbanizacion Tequendama;29;0
-209;San Vicente;29;0
-1994;Pampalinda;25;0
-1778;Santa Anita - La Selva;24;0
-1988;Canaveralejo - Seguros Patria;24;0
-215;El Bosque;23;0
-1790;El Gran Limonar;21;0
-1781;Mayapan - Las Vegas;20;2
-1903;El Lido;20;0
-1796;Urbanizacion San Joaquin;16;2
-1922;Camino Real - Joaquin Borrero Sinisterra;16;0
-208;Versalles;16;0
-1785;Los Portales - Nuevo Rey;15;0
-302;El Penon;15;1
-1782;Las Quintas de Don Simon;15;0
-1916;Los Cambulos;13;0
-206;Centenario;12;0
-1906;San Fernando Nuevo;11;0
-1794;Prados del Limonar;9;2
-1919;Cuarto de Legua - Guadalupe;9;0
-1902;La Cascada;9;0
-1908;Santa Isabel;8;7
-1923;Camino Real Los Fundadores;8;0
-1995;Sector Canaveralejo Guadalupe;8;1
-205;Juanambu;8;6
-1791;Unicentro Cali;7;0
-298;Area en Desarrollo - Parque del Amor;7;0
-1909;Bellavista;5;14
-218;Chipichape;5;1
-1901;El Refugio;5;0
-1793;Ciudadela Pasoancho;4;0
-2298;Ciudad Campestre;4;10
-207;Granada;3;5
-2005;Belen;3;0
-1788;Bosques del Limonar;3;0
-1985;Unidad Residencial El Coliseo;3;0
-1984;Unidad Residencial Santiago de Cali;3;0
-1905;Eucaristico;3;0
-297;Sector Altos de Normandia - Bataclan;2;8
-1911;Miraflores;2;0
-1983;Tejares - Cristales;2;26
-2201;Urbanizacion Ciudad Jardin;2;44
-1918;Urbanizacion Militar;2;0
-1907;Urbanizacion Nueva Granada;1;0
-201;Santa Rita;1;10
-213;La Campina;1;1
-214;La Paz;1;0
-203;Arboledas;1;17
-294;Vipasa;1;0
+"row","row","manz_est5","manz_est6"
+"(,1982)","(,""Santa Barbara"")",,1
+"(,0199)","(,Aguacatal)",,2
+"(,0216)","(,Menga)",,3
+"(,0204)","(,Normandia)",,9
+"(,2297)","(,""Urbanizacion Rio Lili"")",,12
+"(,1992)","(,Canaveral)",,6
+"(,1981)","(,""Sector Altos de Santa Isabel"")",,4
+"(,0202)","(,""Santa Teresita"")",,17
+"(,2299)","(,""Club Campestre"")",,2
+"(,2296)","(,""Parcelaciones Pance"")",,101
+"(,0101)","(,""Terron Colorado"")",,1
+"(0212,)","(""La Flora"",)",60,
+"(1783,)","(""Ciudad Capri"",)",58,
+"(0211,)","(""Prados del Norte"",)",52,
+"(1774,)","(Caney,)",50,
+"(1775,)","(Lili,)",49,
+"(1780,1780)","(""El Ingenio"",""El Ingenio"")",46,34
+"(0210,0210)","(""Santa Monica"",""Santa Monica"")",44,5
+"(1910,)","(""San Fernando Viejo"",)",40,
+"(0295,)","(""Urbanizacion La Flora"",)",38,
+"(1921,)","(""Nueva Tequendama"",)",35,
+"(1784,)","(""La Hacienda"",)",32,
+"(1789,)","(""El Gran Limonar - Cataya"",)",30,
+"(1904,)","(""Urbanizacion Tequendama"",)",29,
+"(0209,)","(""San Vicente"",)",29,
+"(1994,)","(Pampalinda,)",25,
+"(1778,)","(""Santa Anita - La Selva"",)",24,
+"(1988,)","(""Canaveralejo - Seguros Patria"",)",24,
+"(0215,)","(""El Bosque"",)",23,
+"(1790,)","(""El Gran Limonar"",)",21,
+"(1781,1781)","(""Mayapan - Las Vegas"",""Mayapan - Las Vegas"")",20,2
+"(1903,)","(""El Lido"",)",20,
+"(1796,1796)","(""Urbanizacion San Joaquin"",""Urbanizacion San Joaquin"")",16,2
+"(1922,)","(""Camino Real - Joaquin Borrero Sinisterra"",)",16,
+"(0208,)","(Versalles,)",16,
+"(1785,)","(""Los Portales - Nuevo Rey"",)",15,
+"(0302,0302)","(""El Penon"",""El Penon"")",15,1
+"(1782,)","(""Las Quintas de Don Simon"",)",15,
+"(1916,)","(""Los Cambulos"",)",13,
+"(0206,)","(Centenario,)",12,
+"(1906,)","(""San Fernando Nuevo"",)",11,
+"(1794,1794)","(""Prados del Limonar"",""Prados del Limonar"")",9,2
+"(1919,)","(""Cuarto de Legua - Guadalupe"",)",9,
+"(1902,)","(""La Cascada"",)",9,
+"(1908,1908)","(""Santa Isabel"",""Santa Isabel"")",8,7
+"(1923,)","(""Camino Real - Los Fundadores"",)",8,
+"(1995,1995)","(""Sector Canaveralejo Guadalupe"",""Sector Canaveralejo Guadalupe"")",8,1
+"(0205,0205)","(Juanambu,Juanambu)",8,6
+"(1791,)","(""Unicentro Cali"",)",7,
+"(0298,)","(""Area en Desarrollo - Parque del Amor"",)",7,
+"(1909,1909)","(Bellavista,Bellavista)",5,14
+"(0218,0218)","(Chipichape,Chipichape)",5,1
+"(1901,)","(""El Refugio"",)",5,
+"(1793,)","(""Ciudadela Pasoancho"",)",4,
+"(2298,2298)","(""Ciudad Campestre"",""Ciudad Campestre"")",4,10
+"(0207,0207)","(Granada,Granada)",3,5
+"(2005,)","(Belen,)",3,
+"(1788,)","(""Bosques del Limonar"",)",3,
+"(1985,)","(""Unidad Residencial El Coliseo"",)",3,
+"(1984,)","(""Unidad Residencial Santiago de Cali"",)",3,
+"(1905,)","(Eucaristico,)",3,
+"(0297,0297)","(""Sector Altos de Normandia - Bataclan"",""Sector Altos de Normandia - Bataclan"")",2,8
+"(1911,)","(Miraflores,)",2,
+"(1983,1983)","(""Tejares - Cristales"",""Tejares - Cristales"")",2,26
+"(2201,2201)","(""Urbanizacion Ciudad Jardin"",""Urbanizacion Ciudad Jardin"")",2,44
+"(1918,)","(""Urbanizacion Militar"",)",2,
+"(1907,)","(""Urbanizacion Nueva Granada"",)",1,
+"(0201,0201)","(""Santa Rita"",""Santa Rita"")",1,10
+"(0213,0213)","(""La Campina"",""La Campina"")",1,1
+"(0214,)","(""La Paz"",)",1,
+"(0203,0203)","(Arboledas,Arboledas)",1,17
+"(0294,)","(Vipasa,)",1,
