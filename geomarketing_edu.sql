@@ -403,4 +403,37 @@ WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estr
 UPDATE estadisticas_ml SET nac12_e6 = 0  WHERE nac12_e6 IS NULL;
 
 
+--------------- Calculo de universo potencial de poblacion femenina en edad reproductiva para datos historicos y año 2018 --------
+
+ALTER TABLE estadisticas_ml ADD COLUMN up18_e5 int, ADD COLUMN up18_e6 int, ADD COLUMN up17_e5 int, ADD COLUMN up17_e6 int, ADD COLUMN up16_e5 int, ADD COLUMN up16_e6 int,
+ADD COLUMN up15_e5 int, ADD COLUMN up15_e6 int, ADD COLUMN up14_e5 int, ADD COLUMN up14_e6 int, ADD COLUMN up13_e5 int, ADD COLUMN up13_e6 int;
+
+UPDATE estadisticas_ml SET up18_e5 = mer18_est5 - nac17_e5;
+UPDATE estadisticas_ml SET up18_e6 = mer18_est6 - nac17_e6;
+UPDATE estadisticas_ml SET up17_e5 = mer18_est5 - nac16_e5;
+UPDATE estadisticas_ml SET up17_e6 = mer18_est6 - nac16_e6;
+UPDATE estadisticas_ml SET up16_e5 = mer18_est5 - nac15_e5;
+UPDATE estadisticas_ml SET up16_e6 = mer18_est6 - nac15_e6;
+UPDATE estadisticas_ml SET up15_e5 = mer18_est5 - nac14_e5;
+UPDATE estadisticas_ml SET up15_e6 = mer18_est6 - nac14_e6;
+UPDATE estadisticas_ml SET up14_e5 = mer18_est5 - nac13_e5;
+UPDATE estadisticas_ml SET up14_e6 = mer18_est6 - nac13_e6;
+UPDATE estadisticas_ml SET up13_e5 = mer18_est5 - nac12_e5;
+UPDATE estadisticas_ml SET up13_e6 = mer18_est6 - nac12_e6;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
