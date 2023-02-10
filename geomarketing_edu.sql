@@ -422,6 +422,25 @@ UPDATE estadisticas_ml SET up13_e5 = mer18_est5 - nac12_e5;
 UPDATE estadisticas_ml SET up13_e6 = mer18_est6 - nac12_e6;
 
 
+-------- Calculo de promedios para universo potencial de poblacion femenina en edad reproductiva y de nacimientos para datos historicos de barrios --------
+
+ALTER TABLE estadisticas_ml ADD COLUMN pr_up18_e5 double precision, ADD COLUMN pr_up18_e6 double precision, 
+ADD COLUMN pr_nac18_e5 double precision, ADD COLUMN pr_nac18_e6 double precision;
+
+UPDATE estadisticas_ml SET pr_up18_e5 = ((up13_e5 + up14_e5 + up15_e5 + up16_e5 + up17_e5 + up18_e5) / 6.0);
+UPDATE estadisticas_ml SET pr_up18_e6 = ((up13_e6 + up14_e6 + up15_e6 + up16_e6 + up17_e6 + up18_e6) / 6.0);
+UPDATE estadisticas_ml SET pr_nac18_e5 = ((nac12_e5 + nac13_e5 + nac14_e5 + nac15_e5 + nac16_e5 + nac17_e5) / 6.0);
+UPDATE estadisticas_ml SET pr_nac18_e6 = ((nac12_e6 + nac13_e6 + nac14_e6 + nac15_e6 + nac16_e6 + nac17_e6) / 6.0);
+
+
+
+
+
+
+
+
+
+
 
 
 
