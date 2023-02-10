@@ -295,8 +295,112 @@ UPDATE barrios SET viv22_tot = viv22_est5 + viv22_est6;
 
 -- Creación de campos de numero de viviendas por estrato 
 
+ALTER TABLE manz_censal_jf ADD COLUMN viv_est5 int, ADD COLUMN viv_est6 int;
+ALTER TABLE manz_censal_jf ADD COLUMN estrato_moda int;
+
+UPDATE manz_censal_jf SET viv_est5 = capa_canaver_coinc.estr5 FROM capa_canaver_coinc WHERE manz_censal_jf.manz_ccnct = capa_canaver_coinc.manz_ccnct;
+UPDATE manz_censal_jf SET viv_est6 = capa_canaver_coinc.estr6 FROM capa_canaver_coinc WHERE manz_censal_jf.manz_ccnct = capa_canaver_coinc.manz_ccnct;
+
+-- Calculo caracteristicas--------------------------------------------------------------------------------------------------------------------
+
+-- Area, viviendas y estratificación socioeconómica de barrios
+
+ALTER TABLE estadisticas_ml ADD COLUMN area_has double precision;
+ALTER TABLE estadisticas_ml ADD COLUMN estr_moda int;
+UPDATE estadisticas_ml SET area_has = barrios.area_has FROM barrios WHERE cod_barr = barrios.id_barrio;
+UPDATE estadisticas_ml SET estr_moda = manz_censal_jf.estrato FROM manz_censal_jf WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr;
+
+ALTER TABLE estadisticas_ml ADD COLUMN tot_manz int, ADD COLUMN manz_est5 int, ADD COLUMN manz_est6 int;
+UPDATE estadisticas_ml SET tot_manz = (SELECT COUNT(DISTINCT id) AS tot_manz FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr);
+
+UPDATE estadisticas_ml SET manz_est5 = (SELECT COUNT(DISTINCT id) AS manz_est5 FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+
+UPDATE estadisticas_ml SET manz_est6 = (SELECT COUNT(DISTINCT id) AS manz_est6 FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+
+ALTER TABLE estadisticas_ml ADD COLUMN viv18_est5 int, ADD COLUMN viv18_est6 int, ADD COLUMN viv20_est5 int, ADD COLUMN viv20_est6 int,
+ADD COLUMN viv22_est5 int, ADD COLUMN viv22_est6 int;
+
+UPDATE estadisticas_ml SET viv18_est5 = viviendas_year.viv18_est5 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
+UPDATE estadisticas_ml SET viv18_est6 = viviendas_year.viv18_est6 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
+UPDATE estadisticas_ml SET viv20_est5 = viviendas_year.viv20_est5 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
+UPDATE estadisticas_ml SET viv20_est6 = viviendas_year.viv20_est6 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
+UPDATE estadisticas_ml SET viv22_est5 = viviendas_year.viv22_est5 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
+UPDATE estadisticas_ml SET viv22_est6 = viviendas_year.viv22_est6 FROM viviendas_year WHERE estadisticas_ml.cod_barr = viviendas_year.cod_barrio;
 
 
+------------------------ Estadisticas de poblacion femenina segmentadas geograficamente y por estrato socioeconomico ------------------------------
+
+
+---- Creacion de campos correspondientes en tabla de estadisticas y capa de barrios
+
+ALTER TABLE estadisticas_ml ADD COLUMN mer18_est5 int, ADD COLUMN mer18_est6 int, ADD COLUMN dens18_est5 double precision, ADD COLUMN dens18_est6 double precision;
+
+UPDATE estadisticas_ml SET mer18_est5 = (SELECT SUM(mujr15_19) + SUM(mujr20_24) + SUM(mujr25_29) + SUM(mujr30_34) + SUM(mujr35_39) + SUM(mujr40_44)
+FROM manz_censal_jf WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+
+UPDATE estadisticas_ml SET mer18_est6 = (SELECT SUM(mujr15_19) + SUM(mujr20_24) + SUM(mujr25_29) + SUM(mujr30_34) + SUM(mujr35_39) + SUM(mujr40_44)
+FROM manz_censal_jf WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+
+UPDATE estadisticas_ml SET mer18_est5 = 0  WHERE mer18_est5 IS NULL;
+UPDATE estadisticas_ml SET mer18_est6 = 0  WHERE mer18_est6 IS NULL;
+
+----- Creación de campos de numero de nacimientos por barrio, año y estrato socioeconomico-----
+
+ALTER TABLE estadisticas_ml ADD COLUMN nac17_e5 int, ADD COLUMN nac17_e6 int, ADD COLUMN nac16_e5 int, ADD COLUMN nac16_e6 int, 
+ADD COLUMN nac15_e5 int, ADD COLUMN nac15_e6 int, ADD COLUMN nac14_e5 int, ADD COLUMN nac14_e6 int, ADD COLUMN nac13_e5 int, ADD COLUMN nac13_e6 int;
+ALTER TABLE estadisticas_ml ADD COLUMN nac12_e5 int, ADD COLUMN nac12_e6 int;
+
+
+UPDATE estadisticas_ml SET nac17_e5 = (SELECT SUM(manz_censal_jf.n2017) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac17_e5 = 0  WHERE nac17_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_e6 = (SELECT SUM(manz_censal_jf.n2017) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac17_e6 = 0  WHERE nac17_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_e5 = (SELECT SUM(manz_censal_jf.n2016) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac16_e5 = 0  WHERE nac16_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_e6 = (SELECT SUM(manz_censal_jf.n2016) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac16_e6 = 0  WHERE nac16_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_e5 = (SELECT SUM(manz_censal_jf.n2015) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac15_e5 = 0  WHERE nac15_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_e6 = (SELECT SUM(manz_censal_jf.n2015) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac15_e6 = 0  WHERE nac15_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_e5 = (SELECT SUM(manz_censal_jf.n2014) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac14_e5 = 0  WHERE nac14_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_e6 = (SELECT SUM(manz_censal_jf.n2014) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac14_e6 = 0  WHERE nac14_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_e5 = (SELECT SUM(manz_censal_jf.n2013) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac13_e5 = 0  WHERE nac13_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_e6 = (SELECT SUM(manz_censal_jf.n2013) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac13_e6 = 0  WHERE nac13_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_e5 = (SELECT SUM(manz_censal_jf.n2012) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac12_e5 = 0  WHERE nac12_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_e6 = (SELECT SUM(manz_censal_jf.n2012) FROM manz_censal_jf 
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac12_e6 = 0  WHERE nac12_e6 IS NULL;
 
 
 
