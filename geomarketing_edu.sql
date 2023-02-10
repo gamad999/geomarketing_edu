@@ -301,7 +301,10 @@ ALTER TABLE manz_censal_jf ADD COLUMN estrato_moda int;
 UPDATE manz_censal_jf SET viv_est5 = capa_canaver_coinc.estr5 FROM capa_canaver_coinc WHERE manz_censal_jf.manz_ccnct = capa_canaver_coinc.manz_ccnct;
 UPDATE manz_censal_jf SET viv_est6 = capa_canaver_coinc.estr6 FROM capa_canaver_coinc WHERE manz_censal_jf.manz_ccnct = capa_canaver_coinc.manz_ccnct;
 
--- Calculo caracteristicas--------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------ CALCULO CARACTERISTICAS PARA PROYECTO APLICACION DE ALGORITMOS DE BOSQUES ALEATORIOS - MACHINE LEARNING ---------------------
 
 -- Area, viviendas y estratificación socioeconómica de barrios
 
@@ -433,6 +436,14 @@ UPDATE estadisticas_ml SET pr_nac18_e5 = ((nac12_e5 + nac13_e5 + nac14_e5 + nac1
 UPDATE estadisticas_ml SET pr_nac18_e6 = ((nac12_e6 + nac13_e6 + nac14_e6 + nac15_e6 + nac16_e6 + nac17_e6) / 6.0);
 
 
+----- Calculo de indicador: porcentaje normalizado de nacimientos para cada barrio y estrato 
+----- con respecto al universo potencial promediado de mujeres en edad reproductiva al año 2018
+
+ALTER TABLE estadisticas_ml ADD COLUMN pnn_nac18_e5 double precision, ADD COLUMN pnn_nac18_e6 double precision; 
+UPDATE estadisticas_ml SET pnn_nac18_e5 = (pr_nac18_e5 / pr_up18_e5) * 100 WHERE pr_up18_e5 > 0;
+UPDATE estadisticas_ml SET pnn_nac18_e6 = (pr_nac18_e6 / pr_up18_e6) * 100 WHERE pr_up18_e6 > 0;
+UPDATE estadisticas_ml SET pnn_nac18_e5 = 0 WHERE pnn_nac18_e5 IS NULL;
+UPDATE estadisticas_ml SET pnn_nac18_e6 = 0 WHERE pnn_nac18_e6 IS NULL;
 
 
 
