@@ -446,11 +446,42 @@ UPDATE estadisticas_ml SET pnn_nac18_e5 = 0 WHERE pnn_nac18_e5 IS NULL;
 UPDATE estadisticas_ml SET pnn_nac18_e6 = 0 WHERE pnn_nac18_e6 IS NULL;
 
 
+----- Caracteristicas de mujeres en edad reproductiva que tuvieron hijo por edades ---------------------------------
 
+------  Calculo de universo potencial por edades ------------
 
+ALTER TABLE estadisticas_ml ADD COLUMN tt_ed1_e5 int, ADD COLUMN tt_ed1_e6 int, ADD COLUMN tt_ed2_e5 int, ADD COLUMN tt_ed2_e6 int, 
+ADD COLUMN tt_ed3_e5 int, ADD COLUMN tt_ed3_e6 int;
 
+UPDATE estadisticas_ml SET tt_ed1_e5 = (SELECT SUM(mujr15_19) + SUM(mujr20_24) + SUM(mujr25_29) AS tt_ed1_e5 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5); 
 
+UPDATE estadisticas_ml SET tt_ed1_e5 = 0 WHERE tt_ed1_e5 IS NULL;
 
+UPDATE estadisticas_ml SET tt_ed1_e6 = (SELECT SUM(mujr15_19) + SUM(mujr20_24) + SUM(mujr25_29) AS tt_ed1_e6 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6); 
+
+UPDATE estadisticas_ml SET tt_ed1_e6 = 0 WHERE tt_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET tt_ed2_e5 = (SELECT SUM(mujr30_34) + SUM(mujr35_39) AS tt_ed2_e5 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+
+UPDATE estadisticas_ml SET tt_ed2_e5 = 0 WHERE tt_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET tt_ed2_e6 = (SELECT SUM(mujr30_34) + SUM(mujr35_39) AS tt_ed2_e6 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+
+UPDATE estadisticas_ml SET tt_ed2_e6 = 0 WHERE tt_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET tt_ed3_e5 = (SELECT SUM(mujr40_44) AS tt_ed3_e5 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 5);
+
+UPDATE estadisticas_ml SET tt_ed3_e5 = 0 WHERE tt_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET tt_ed3_e6 = (SELECT SUM(mujr40_44) AS tt_ed3_e6 FROM manz_censal_jf
+WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estrato_moda = 6);
+
+UPDATE estadisticas_ml SET tt_ed3_e6 = 0 WHERE tt_ed3_e6 IS NULL;
 
 
 
