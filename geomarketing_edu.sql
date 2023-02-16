@@ -484,6 +484,180 @@ WHERE estadisticas_ml.cod_barr = manz_censal_jf.cod_barr AND manz_censal_jf.estr
 UPDATE estadisticas_ml SET tt_ed3_e6 = 0 WHERE tt_ed3_e6 IS NULL;
 
 
+--- Migracion de datos de munero de nacimientos en mujeres en edad reproductiva por edades a la tabla de estadisticas para modelo ML
+
+ALTER TABLE tabla_ed7 ADD COLUMN cod_barrio varchar(4), ADD COLUMN estrato_moda int;
+
+UPDATE tabla_ed7 SET cod_barrio = manz_censal_jf.cod_barr FROM manz_censal_jf WHERE tabla_ed7.manz_ccnct = manz_censal_jf.manz_ccnct;
+UPDATE tabla_ed7 SET estrato_moda = manz_censal_jf.estrato_moda FROM manz_censal_jf WHERE tabla_ed7.manz_ccnct = manz_censal_jf.manz_ccnct;
+
+ALTER TABLE estadisticas_ml ADD COLUMN nac17_ed1_e5 int, ADD COLUMN nac17_ed1_e6 int, ADD COLUMN nac17_ed2_e5 int, ADD COLUMN nac17_ed2_e6 int,
+ADD COLUMN nac17_ed3_e5 int, ADD COLUMN nac17_ed3_e6 int, ADD COLUMN nac16_ed1_e5 int, ADD COLUMN nac16_ed1_e6 int,
+ADD COLUMN nac16_ed2_e5 int, ADD COLUMN nac16_ed2_e6 int, ADD COLUMN nac16_ed3_e5 int, ADD COLUMN nac16_ed3_e6 int,
+ADD COLUMN nac15_ed1_e5 int, ADD COLUMN nac15_ed1_e6 int, ADD COLUMN nac15_ed2_e5 int, ADD COLUMN nac15_ed2_e6 int,
+ADD COLUMN nac15_ed3_e5 int, ADD COLUMN nac15_ed3_e6 int, ADD COLUMN nac14_ed1_e5 int, ADD COLUMN nac14_ed1_e6 int,
+ADD COLUMN nac14_ed2_e5 int, ADD COLUMN nac14_ed2_e6 int, ADD COLUMN nac14_ed3_e5 int, ADD COLUMN nac14_ed3_e6 int,
+ADD COLUMN nac13_ed1_e5 int, ADD COLUMN nac13_ed1_e6 int, ADD COLUMN nac13_ed2_e5 int, ADD COLUMN nac13_ed2_e6 int,
+ADD COLUMN nac13_ed3_e5 int, ADD COLUMN nac13_ed3_e6 int;
+
+ALTER TABLE estadisticas_ml ADD COLUMN nac12_ed1_e5 int, ADD COLUMN nac12_ed1_e6 int, ADD COLUMN nac12_ed2_e5 int, ADD COLUMN nac12_ed2_e6 int,
+ADD COLUMN nac12_ed3_e5 int, ADD COLUMN nac12_ed3_e6 int;
+
+UPDATE estadisticas_ml SET nac17_ed1_e5 = (SELECT SUM(ed1_17) AS nac17_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac17_ed1_e5 = 0 WHERE nac17_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_ed1_e6 = (SELECT SUM(ed1_17) AS nac17_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac17_ed1_e6 = 0 WHERE nac17_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_ed2_e5 = (SELECT SUM(ed2_17a) AS nac17_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac17_ed2_e5 = 0 WHERE nac17_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_ed2_e6 = (SELECT SUM(ed2_17a) AS nac17_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac17_ed2_e6 = 0 WHERE nac17_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_ed3_e5 = (SELECT SUM(ed3_17) AS nac17_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac17_ed3_e5 = 0 WHERE nac17_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac17_ed3_e6 = (SELECT SUM(ed3_17) AS nac17_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac17_ed3_e6 = 0 WHERE nac17_ed3_e6 IS NULL;
+
+
+
+UPDATE estadisticas_ml SET nac16_ed1_e5 = (SELECT SUM(ed1_16) AS nac16_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac16_ed1_e5 = 0 WHERE nac16_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_ed1_e6 = (SELECT SUM(ed1_16) AS nac16_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac16_ed1_e6 = 0 WHERE nac16_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_ed2_e5 = (SELECT SUM(ed2_16a) AS nac16_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac16_ed2_e5 = 0 WHERE nac16_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_ed2_e6 = (SELECT SUM(ed2_16a) AS nac16_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac16_ed2_e6 = 0 WHERE nac16_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_ed3_e5 = (SELECT SUM(ed3_16) AS nac16_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac16_ed3_e5 = 0 WHERE nac16_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac16_ed3_e6 = (SELECT SUM(ed3_16) AS nac16_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac16_ed3_e6 = 0 WHERE nac16_ed3_e6 IS NULL;
+
+
+
+UPDATE estadisticas_ml SET nac15_ed1_e5 = (SELECT SUM(ed1_15a) AS nac15_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac15_ed1_e5 = 0 WHERE nac15_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_ed1_e6 = (SELECT SUM(ed1_15a) AS nac15_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac15_ed1_e6 = 0 WHERE nac15_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_ed2_e5 = (SELECT SUM(ed2_15a) AS nac15_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac15_ed2_e5 = 0 WHERE nac15_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_ed2_e6 = (SELECT SUM(ed2_15a) AS nac15_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac15_ed2_e6 = 0 WHERE nac15_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_ed3_e5 = (SELECT SUM(ed3_15a) AS nac15_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac15_ed3_e5 = 0 WHERE nac15_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac15_ed3_e6 = (SELECT SUM(ed3_15a) AS nac15_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac15_ed3_e6 = 0 WHERE nac15_ed3_e6 IS NULL;
+
+
+
+
+UPDATE estadisticas_ml SET nac14_ed1_e5 = (SELECT SUM(ed1_14) AS nac14_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac14_ed1_e5 = 0 WHERE nac14_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_ed1_e6 = (SELECT SUM(ed1_14) AS nac14_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac14_ed1_e6 = 0 WHERE nac14_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_ed2_e5 = (SELECT SUM(ed2_14a) AS nac14_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac14_ed2_e5 = 0 WHERE nac14_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_ed2_e6 = (SELECT SUM(ed2_14a) AS nac14_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac14_ed2_e6 = 0 WHERE nac14_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_ed3_e5 = (SELECT SUM(ed3_14a) AS nac14_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac14_ed3_e5 = 0 WHERE nac14_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac14_ed3_e6 = (SELECT SUM(ed3_14a) AS nac14_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac14_ed3_e6 = 0 WHERE nac14_ed3_e6 IS NULL;
+
+
+
+
+UPDATE estadisticas_ml SET nac13_ed1_e5 = (SELECT SUM(ed1_13) AS nac13_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac13_ed1_e5 = 0 WHERE nac13_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_ed1_e6 = (SELECT SUM(ed1_13) AS nac13_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac13_ed1_e6 = 0 WHERE nac13_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_ed2_e5 = (SELECT SUM(ed2_13a) AS nac13_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac13_ed2_e5 = 0 WHERE nac13_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_ed2_e6 = (SELECT SUM(ed2_13a) AS nac13_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac13_ed2_e6 = 0 WHERE nac13_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_ed3_e5 = (SELECT SUM(ed3_13a) AS nac13_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac13_ed3_e5 = 0 WHERE nac13_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac13_ed3_e6 = (SELECT SUM(ed3_13a) AS nac13_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac13_ed3_e6 = 0 WHERE nac13_ed3_e6 IS NULL;
+
+
+
+UPDATE estadisticas_ml SET nac12_ed1_e5 = (SELECT SUM(ed1_12) AS nac12_ed1_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac12_ed1_e5 = 0 WHERE nac12_ed1_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_ed1_e6 = (SELECT SUM(ed1_12) AS nac12_ed1_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac12_ed1_e6 = 0 WHERE nac12_ed1_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_ed2_e5 = (SELECT SUM(ed2_12a) AS nac12_ed2_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac12_ed2_e5 = 0 WHERE nac12_ed2_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_ed2_e6 = (SELECT SUM(ed2_12a) AS nac12_ed2_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac12_ed2_e6 = 0 WHERE nac12_ed2_e6 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_ed3_e5 = (SELECT SUM(ed3_12a) AS nac12_ed3_e5 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 5);
+UPDATE estadisticas_ml SET nac12_ed3_e5 = 0 WHERE nac12_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET nac12_ed3_e6 = (SELECT SUM(ed3_12a) AS nac12_ed3_e6 FROM tabla_ed7 
+WHERE estadisticas_ml.cod_barr = tabla_ed7.cod_barrio AND tabla_ed7.estrato_moda = 6);
+UPDATE estadisticas_ml SET nac12_ed3_e6 = 0 WHERE nac12_ed3_e6 IS NULL;
 
 
 
@@ -491,10 +665,53 @@ UPDATE estadisticas_ml SET tt_ed3_e6 = 0 WHERE tt_ed3_e6 IS NULL;
 
 
 
+ALTER TABLE estadisticas_ml ADD COLUMN pr_ed1_e5 double precision, ADD COLUMN pr_ed1_e6 double precision,
+ADD COLUMN pr_ed2_e5 double precision, ADD COLUMN pr_ed2_e6 double precision, ADD COLUMN pr_ed3_e5 double precision,
+ADD COLUMN pr_ed3_e6 double precision;
+
+UPDATE estadisticas_ml SET pr_ed1_e5 = ((nac17_ed1_e5 + nac16_ed1_e5 + nac15_ed1_e5 + nac14_ed1_e5 + nac13_ed1_e5 + nac12_ed1_e5) / 6.0 );
+
+UPDATE estadisticas_ml SET pr_ed1_e6 = ((nac17_ed1_e6 + nac16_ed1_e6 + nac15_ed1_e6 + nac14_ed1_e6 + nac13_ed1_e6 + nac12_ed1_e6) / 6.0 );
+
+UPDATE estadisticas_ml SET pr_ed2_e5 = ((nac17_ed2_e5 + nac16_ed2_e5 + nac15_ed2_e5 + nac14_ed2_e5 + nac13_ed2_e5 + nac12_ed2_e5) / 6.0 );
+
+UPDATE estadisticas_ml SET pr_ed2_e6 = ((nac17_ed2_e6 + nac16_ed2_e6 + nac15_ed2_e6 + nac14_ed2_e6 + nac13_ed2_e6 + nac12_ed2_e6) / 6.0 );
+
+UPDATE estadisticas_ml SET pr_ed3_e5 = ((nac17_ed3_e5 + nac16_ed3_e5 + nac15_ed3_e5 + nac14_ed3_e5 + nac13_ed3_e5 + nac12_ed3_e5) / 6.0 );
+
+UPDATE estadisticas_ml SET pr_ed3_e6 = ((nac17_ed3_e6 + nac16_ed3_e6 + nac15_ed3_e6 + nac14_ed3_e6 + nac13_ed3_e6 + nac12_ed3_e6) / 6.0 );
 
 
+ALTER TABLE estadisticas_ml ADD COLUMN pnn_ed1_e5 double precision, ADD COLUMN pnn_ed1_e6 double precision, 
+ADD COLUMN pnn_ed2_e5 double precision, ADD COLUMN pnn_ed2_e6 double precision,
+ADD COLUMN pnn_ed3_e5 double precision, ADD COLUMN pnn_ed3_e6 double precision;
 
+UPDATE estadisticas_ml SET pnn_ed1_e5 = (pr_ed1_e5 / pr_nac18_e5) * 100 WHERE pr_nac18_e5 > 0; 
+UPDATE estadisticas_ml SET pnn_ed1_e5 = 0 WHERE pnn_ed1_e5 IS NULL;
 
+UPDATE estadisticas_ml SET pnn_ed1_e6 = (pr_ed1_e6 / pr_nac18_e6) * 100 WHERE pr_nac18_e6 > 0; 
+UPDATE estadisticas_ml SET pnn_ed1_e6 = 0 WHERE pnn_ed1_e6 IS NULL;
 
+UPDATE estadisticas_ml SET pnn_ed2_e5 = (pr_ed2_e5 / pr_nac18_e5) * 100 WHERE pr_nac18_e5 > 0; 
+UPDATE estadisticas_ml SET pnn_ed2_e5 = 0 WHERE pnn_ed2_e5 IS NULL;
 
+UPDATE estadisticas_ml SET pnn_ed2_e6 = (pr_ed2_e6 / pr_nac18_e6) * 100 WHERE pr_nac18_e6 > 0; 
+UPDATE estadisticas_ml SET pnn_ed2_e6 = 0 WHERE pnn_ed2_e6 IS NULL;
 
+UPDATE estadisticas_ml SET pnn_ed3_e5 = (pr_ed3_e5 / pr_nac18_e5) * 100 WHERE pr_nac18_e5 > 0; 
+UPDATE estadisticas_ml SET pnn_ed3_e5 = 0 WHERE pnn_ed3_e5 IS NULL;
+
+UPDATE estadisticas_ml SET pnn_ed3_e6 = (pr_ed3_e6 / pr_nac18_e6) * 100 WHERE pr_nac18_e6 > 0; 
+UPDATE estadisticas_ml SET pnn_ed3_e6 = 0 WHERE pnn_ed3_e6 IS NULL;
+
+ALTER TABLE estadisticas_ml ADD COLUMN pnnt_e5 double precision, ADD COLUMN pnnt_e6 double precision;
+
+UPDATE estadisticas_ml SET pnnt_e5 = pnn_ed1_e5 + pnn_ed2_e5 + pnn_ed3_e5;
+UPDATE estadisticas_ml SET pnnt_e6 = pnn_ed1_e6 + pnn_ed2_e6 + pnn_ed3_e6;
+
+SELECT cod_barr, barrio, zona, nac16_e5, nac15_e5, nac14_e5, nac13_e5, nac12_e5, 
+pr_up18_e5, pr_nac18_e5, pnn_nac18_e5, pnn_ed1_e5, pnn_ed2_e5, pnn_ed3_e5, nac17_e5
+FROM estadisticas_ml WHERE pr_nac18_e5 >= 1 AND zona = 'El Ingenio';
+
+SELECT cod_barr, barrio, zona, manz_ccnct, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007
+FROM manz_censal_jf WHERE estrato_moda = 5;
