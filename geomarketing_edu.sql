@@ -713,5 +713,23 @@ SELECT cod_barr, barrio, zona, nac16_e5, nac15_e5, nac14_e5, nac13_e5, nac12_e5,
 pr_up18_e5, pr_nac18_e5, pnn_nac18_e5, pnn_ed1_e5, pnn_ed2_e5, pnn_ed3_e5, nac17_e5
 FROM estadisticas_ml WHERE pr_nac18_e5 >= 1 AND zona = 'El Ingenio';
 
-SELECT cod_barr, barrio, zona, manz_ccnct, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007
-FROM manz_censal_jf WHERE estrato_moda = 5;
+
+--------------- Consolidacion de resultados proceso de aplicacion de algoritmo de machine learning bosques aleatorios regresion -----------------
+
+CREATE TABLE resultados_e5(id serial primary key, cod_barr varchar(4), barrio varchar(80), zona varchar(20), manz_ccnct varchar(25),
+n2017 int, n2016 int, n2015 int, n2014 int, n2013 int, n2012 int, n2011 int, n2010 int, n2009 int, n2008 int, n2007 int);
+
+INSERT INTO resultados_e5(
+SELECT ROW_NUMBER() OVER (ORDER BY 1), cod_barr, barrio, zona, manz_ccnct, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007
+FROM manz_censal_jf WHERE estrato_moda = 5);
+
+ALTER TABLE resultados_e5 ADD COLUMN y_pred18 double precision; 
+ALTER TABLE resultados_e5 ADD COLUMN y_pred18_red int;
+UPDATE resultados_e5 SET y_pred18 = y_pr_e5.y_pred FROM y_pr_e5 WHERE resultados_e5.id = y_pr_e5.id;
+UPDATE resultados_e5 SET y_pred18_red = y_pr_e5.y_red_e5 FROM y_pr_e5 WHERE resultados_e5.id = y_pr_e5.id;
+
+SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred18, y_pred18_red, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010
+FROM resultados_e5 ORDER BY id;
+
+
+
