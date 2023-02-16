@@ -725,11 +725,15 @@ FROM manz_censal_jf WHERE estrato_moda = 5);
 
 ALTER TABLE resultados_e5 ADD COLUMN y_pred18 double precision; 
 ALTER TABLE resultados_e5 ADD COLUMN y_pred18_red int;
+ALTER TABLE resultados_e5 ADD COLUMN y_pred19 double precision;
+ALTER TABLE resultados_e5 ADD COLUMN y_pred19_red int;
 UPDATE resultados_e5 SET y_pred18 = y_pr_e5.y_pred FROM y_pr_e5 WHERE resultados_e5.id = y_pr_e5.id;
 UPDATE resultados_e5 SET y_pred18_red = y_pr_e5.y_red_e5 FROM y_pr_e5 WHERE resultados_e5.id = y_pr_e5.id;
+UPDATE resultados_e5 SET y_pred19 = ypr_e5_a19.y_pred19 FROM ypr_e5_a19 WHERE resultados_e5.id = ypr_e5_a19.id;
+UPDATE resultados_e5 SET y_pred19_red = ypr_e5_a19.y_pred19_red FROM ypr_e5_a19 WHERE resultados_e5.id = ypr_e5_a19.id;
 
-SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred18, y_pred18_red, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010
-FROM resultados_e5 ORDER BY id;
+SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred19, y_pred19_red, y_pred18, y_pred18_red, n2017, n2016, n2015, n2014, 
+n2013, n2012, n2011, n2010 FROM resultados_e5 ORDER BY id;
 
 
 
