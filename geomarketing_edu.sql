@@ -758,4 +758,25 @@ SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred24, y_pred24_red, y_pred23,
 n2013, n2012, n2011, n2010 FROM resultados_e5 ORDER BY id;
 
 
+------------ Estrato 6 ------------------------
+
+CREATE TABLE resultados_e6(id serial primary key, cod_barr varchar(4), barrio varchar(80), zona varchar(20), manz_ccnct varchar(25),
+n2017 int, n2016 int, n2015 int, n2014 int, n2013 int, n2012 int, n2011 int, n2010 int, n2009 int, n2008 int, n2007 int);
+
+INSERT INTO resultados_e6(
+SELECT ROW_NUMBER() OVER (ORDER BY 1), cod_barr, barrio, zona, manz_ccnct, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007
+FROM manz_censal_jf WHERE estrato_moda = 6);
+
+ALTER TABLE resultados_e6 ADD COLUMN y_pred18 double precision; 
+ALTER TABLE resultados_e6 ADD COLUMN y_pred18_red int;
+
+UPDATE resultados_e6 SET y_pred18 = ypr_e6_a18.y_pred18 FROM ypr_e6_a18 WHERE resultados_e6.id = ypr_e6_a18.id;
+UPDATE resultados_e6 SET y_pred18_red = ypr_e6_a18.y_pred18_red FROM ypr_e6_a18 WHERE resultados_e6.id = ypr_e6_a18.id;
+
+SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred18, y_pred18_red, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007
+FROM resultados_e6 ORDER BY id;
+
+
+
+
 
