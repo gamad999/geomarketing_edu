@@ -305,6 +305,46 @@ with open('F:/MachineLearningJeferson/TablasResultados/result22_e5.csv', 'w', ne
     my_writer.writerow(ypr_e5_a22)
 
 
+# In[32]:
+
+
+cali_a22 = 'F:/MachineLearningJeferson/TablasResultados/resultados_e5_5.csv'
+df5 = pd.read_csv(cali_a22)
+df5.head()
+
+
+# In[33]:
+
+
+df5.info()
+
+
+# In[34]:
+
+
+cali_est5_a22 = df5.iloc[:, [5,7,9,11,13,15,16,17]]
+
+
+# In[35]:
+
+
+ypr_e5_a23 = Bar.predict(cali_est5_a22)
+
+
+# In[36]:
+
+
+print(ypr_e5_a23)
+
+
+# In[37]:
+
+
+with open('F:/MachineLearningJeferson/TablasResultados/result23_e5.csv', 'w', newline = '') as csvfile:
+    my_writer = csv.writer(csvfile, delimiter = ' ')
+    my_writer.writerow(ypr_e5_a23)
+
+
 # In[ ]:
 
 
