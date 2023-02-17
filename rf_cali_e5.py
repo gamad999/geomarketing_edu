@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np
@@ -34,14 +34,14 @@ df.info()
 df.describe()
 
 
-# In[5]:
+# In[7]:
 
 
 X_bar = df.iloc[:, [5,6,7,8,9,10,11,12]]
 #X_bar2 = df.iloc[:, [4,5,6,7,8,9]]
 
 
-# In[6]:
+# In[8]:
 
 
 from sklearn.model_selection import train_test_split
@@ -49,13 +49,13 @@ from sklearn.model_selection import train_test_split
 Y_bar = df.iloc[:, 4]
 
 
-# In[7]:
+# In[9]:
 
 
 X_train, X_test, Y_train, Y_test = train_test_split(X_bar, Y_bar, test_size = 0.2)
 
 
-# In[8]:
+# In[10]:
 
 
 from sklearn.ensemble import RandomForestRegressor
@@ -63,7 +63,7 @@ from sklearn.ensemble import RandomForestRegressor
 Bar = RandomForestRegressor(n_estimators = 650, max_depth = 11, max_features = 8)
 
 
-# In[9]:
+# In[11]:
 
 
 # Entrenamiento del modelo
@@ -71,7 +71,7 @@ Bar = RandomForestRegressor(n_estimators = 650, max_depth = 11, max_features = 8
 Bar.fit(X_train, Y_train)
 
 
-# In[10]:
+# In[12]:
 
 
 # Realizar una predicción
@@ -79,19 +79,19 @@ Bar.fit(X_train, Y_train)
 Y_pred = Bar.predict(X_test)
 
 
-# In[11]:
+# In[13]:
 
 
 print(Y_test)
 
 
-# In[12]:
+# In[14]:
 
 
 print(Y_pred)
 
 
-# In[13]:
+# In[15]:
 
 
 print('Datos del modelo Bosques Aleatorios Regresion:')
@@ -183,6 +183,46 @@ print(ypr_e5_a19)
 with open('F:/MachineLearningJeferson/TablasResultados/result19_e5.csv', 'w', newline = '') as csvfile:
     my_writer = csv.writer(csvfile, delimiter = ' ')
     my_writer.writerow(ypr_e5_a19)
+
+
+# In[3]:
+
+
+cali_a19 = 'F:/MachineLearningJeferson/TablasResultados/resultados_e5_2.csv'
+df2 = pd.read_csv(cali_a19)
+df2.head()
+
+
+# In[4]:
+
+
+df2.info()
+
+
+# In[5]:
+
+
+cali_est5_a19 = df2.iloc[:, [5,7,9,10,11,12,13,14]]
+
+
+# In[17]:
+
+
+ypr_e5_a20 = Bar.predict(cali_est5_a19)
+
+
+# In[18]:
+
+
+print(ypr_e5_a20)
+
+
+# In[19]:
+
+
+with open('F:/MachineLearningJeferson/TablasResultados/result20_e5.csv', 'w', newline = '') as csvfile:
+    my_writer = csv.writer(csvfile, delimiter = ' ')
+    my_writer.writerow(ypr_e5_a20)
 
 
 # In[ ]:
