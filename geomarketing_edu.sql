@@ -777,6 +777,8 @@ ALTER TABLE resultados_e6 ADD COLUMN y_pred21 double precision;
 ALTER TABLE resultados_e6 ADD COLUMN y_pred21_red int;
 ALTER TABLE resultados_e6 ADD COLUMN y_pred22 double precision; 
 ALTER TABLE resultados_e6 ADD COLUMN y_pred22_red int;
+ALTER TABLE resultados_e6 ADD COLUMN y_pred23 double precision; 
+ALTER TABLE resultados_e6 ADD COLUMN y_pred23_red int;
 
 UPDATE resultados_e6 SET y_pred18 = ypr_e6_a18.y_pred18 FROM ypr_e6_a18 WHERE resultados_e6.id = ypr_e6_a18.id;
 UPDATE resultados_e6 SET y_pred18_red = ypr_e6_a18.y_pred18_red FROM ypr_e6_a18 WHERE resultados_e6.id = ypr_e6_a18.id;
@@ -788,9 +790,12 @@ UPDATE resultados_e6 SET y_pred21 = ypr_e6_a21.y_pred21 FROM ypr_e6_a21 WHERE re
 UPDATE resultados_e6 SET y_pred21_red = ypr_e6_a21.y_pred21_red FROM ypr_e6_a21 WHERE resultados_e6.id = ypr_e6_a21.id;
 UPDATE resultados_e6 SET y_pred22 = ypr_e6_a22.y_pred22 FROM ypr_e6_a22 WHERE resultados_e6.id = ypr_e6_a22.id;
 UPDATE resultados_e6 SET y_pred22_red = ypr_e6_a22.y_pred22_red FROM ypr_e6_a22 WHERE resultados_e6.id = ypr_e6_a22.id;
+UPDATE resultados_e6 SET y_pred23 = ypr_e6_a23.y_pred23 FROM ypr_e6_a23 WHERE resultados_e6.id = ypr_e6_a23.id;
+UPDATE resultados_e6 SET y_pred23_red = ypr_e6_a23.y_pred23_red FROM ypr_e6_a23 WHERE resultados_e6.id = ypr_e6_a23.id;
 
 
-SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred22, y_pred22_red, y_pred21, y_pred21_red, y_pred20, y_pred20_red, y_pred19, y_pred19_red, 
+
+SELECT id, manz_ccnct, cod_barr, barrio, zona, y_pred23, y_pred23_red, y_pred22, y_pred22_red, y_pred21, y_pred21_red, y_pred20, y_pred20_red, y_pred19, y_pred19_red, 
 y_pred18, y_pred18_red, n2017, n2016, n2015, n2014, n2013, n2012, n2011, n2010, n2009, n2008, n2007 
 FROM resultados_e6 ORDER BY id;
 

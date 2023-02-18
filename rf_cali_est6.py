@@ -303,6 +303,46 @@ with open('F:/MachineLearningJeferson/TablasResultados/result22_e6.csv', 'w', ne
     my_writer.writerow(ypr_e6_a22)
 
 
+# In[34]:
+
+
+calie6_a22 = 'F:/MachineLearningJeferson/TablasResultados/resultados_e6_6.csv'
+df6 = pd.read_csv(calie6_a22)
+df6.head()
+
+
+# In[35]:
+
+
+df6.info()
+
+
+# In[36]:
+
+
+cali_est6_a22 = df6.iloc[:, [5,7,9,11,13,15,16,17]]
+
+
+# In[37]:
+
+
+ypr_e6_a23 = Bar.predict(cali_est6_a22)
+
+
+# In[38]:
+
+
+print(ypr_e6_a23)
+
+
+# In[39]:
+
+
+with open('F:/MachineLearningJeferson/TablasResultados/result23_e6.csv', 'w', newline = '') as csvfile:
+    my_writer = csv.writer(csvfile, delimiter = ' ')
+    my_writer.writerow(ypr_e6_a23)
+
+
 # In[ ]:
 
 
