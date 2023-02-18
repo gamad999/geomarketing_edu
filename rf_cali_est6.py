@@ -249,7 +249,7 @@ cali_est6_a20 = df4.iloc[:, [5,7,9,11,12,13,14,15]]
 ypr_e6_a21 = Bar.predict(cali_est6_a20)
 
 
-# In[25]:
+# In[27]:
 
 
 print(ypr_e6_a21)
@@ -261,6 +261,46 @@ print(ypr_e6_a21)
 with open('F:/MachineLearningJeferson/TablasResultados/result21_e6.csv', 'w', newline = '') as csvfile:
     my_writer = csv.writer(csvfile, delimiter = ' ')
     my_writer.writerow(ypr_e6_a21)
+
+
+# In[28]:
+
+
+calie6_a21 = 'F:/MachineLearningJeferson/TablasResultados/resultados_e6_5.csv'
+df5 = pd.read_csv(calie6_a21)
+df5.head()
+
+
+# In[29]:
+
+
+df5.info()
+
+
+# In[30]:
+
+
+cali_est6_a21 = df5.iloc[:, [5,7,9,11,13,14,15,16]]
+
+
+# In[31]:
+
+
+ypr_e6_a22 = Bar.predict(cali_est6_a21)
+
+
+# In[32]:
+
+
+print(ypr_e6_a22)
+
+
+# In[33]:
+
+
+with open('F:/MachineLearningJeferson/TablasResultados/result22_e6.csv', 'w', newline = '') as csvfile:
+    my_writer = csv.writer(csvfile, delimiter = ' ')
+    my_writer.writerow(ypr_e6_a22)
 
 
 # In[ ]:
