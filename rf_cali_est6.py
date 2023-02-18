@@ -34,13 +34,13 @@ df.info()
 df.describe()
 
 
-# In[12]:
+# In[6]:
 
 
 X_bar = df.iloc[:, [6,7,8,9,10,11,12,13]]
 
 
-# In[13]:
+# In[7]:
 
 
 from sklearn.model_selection import train_test_split
@@ -48,13 +48,13 @@ from sklearn.model_selection import train_test_split
 Y_bar = df.iloc[:, 5]
 
 
-# In[14]:
+# In[8]:
 
 
 X_train, X_test, Y_train, Y_test = train_test_split(X_bar, Y_bar, test_size = 0.2)
 
 
-# In[15]:
+# In[9]:
 
 
 from sklearn.ensemble import RandomForestRegressor
@@ -62,7 +62,7 @@ from sklearn.ensemble import RandomForestRegressor
 Bar = RandomForestRegressor(n_estimators = 250, max_depth = 8, max_features = 8)
 
 
-# In[16]:
+# In[10]:
 
 
 # Entrenamiento del modelo
@@ -70,7 +70,7 @@ Bar = RandomForestRegressor(n_estimators = 250, max_depth = 8, max_features = 8)
 Bar.fit(X_train, Y_train)
 
 
-# In[17]:
+# In[11]:
 
 
 # Realizar una predicción
@@ -78,19 +78,19 @@ Bar.fit(X_train, Y_train)
 Y_pred = Bar.predict(X_test)
 
 
-# In[18]:
+# In[12]:
 
 
 print(Y_test)
 
 
-# In[19]:
+# In[13]:
 
 
 print(Y_pred)
 
 
-# In[20]:
+# In[14]:
 
 
 print('Datos del modelo Bosques Aleatorios Regresion:')
@@ -181,6 +181,46 @@ print(ypr_e6_a19)
 with open('F:/MachineLearningJeferson/TablasResultados/result19_e6.csv', 'w', newline = '') as csvfile:
     my_writer = csv.writer(csvfile, delimiter = ' ')
     my_writer.writerow(ypr_e6_a19)
+
+
+# In[15]:
+
+
+calie6_a19 = 'F:/MachineLearningJeferson/TablasResultados/resultados_e6_3.csv'
+df3 = pd.read_csv(calie6_a19)
+df3.head()
+
+
+# In[16]:
+
+
+df3.info()
+
+
+# In[17]:
+
+
+cali_est6_a19 = df3.iloc[:, [5,7,9,10,11,12,13,14]]
+
+
+# In[18]:
+
+
+ypr_e6_a20 = Bar.predict(cali_est6_a19)
+
+
+# In[19]:
+
+
+print(ypr_e6_a20)
+
+
+# In[20]:
+
+
+with open('F:/MachineLearningJeferson/TablasResultados/result20_e6.csv', 'w', newline = '') as csvfile:
+    my_writer = csv.writer(csvfile, delimiter = ' ')
+    my_writer.writerow(ypr_e6_a20)
 
 
 # In[ ]:
